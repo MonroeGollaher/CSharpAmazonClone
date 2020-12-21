@@ -1,6 +1,6 @@
 namespace Amazen.Services
 {
-    public class ListService
+    public class ListsService
     {
         
     }

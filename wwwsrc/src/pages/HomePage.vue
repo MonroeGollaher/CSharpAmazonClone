@@ -1,22 +1,20 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-  </div>
-  <div class="row">
-    <item-component v-for="item in items" :key="item" :item-prop="item" />
+  <div class="home container-fluid">
+    <div class="row">
+      <items-component v-for="item in items" :key="item" :item-prop="item" />
+    </div>
   </div>
 </template>
 
 <script>
 import { computed, onMounted } from 'vue'
-import { itemService } from '../services/ItemService'
+import { itemsService } from '../services/ItemsService'
 import { AppState } from '../AppState'
-import ItemComponent from '../components/ItemComponent'
 export default {
   name: 'Home',
-  components: { ItemComponent },
   setup() {
     onMounted(async() => {
-      await itemService.getItems()
+      await itemsService.getItems()
     })
     return {
       items: computed(() => AppState.items),

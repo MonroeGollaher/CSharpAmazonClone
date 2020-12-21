@@ -1,8 +1,8 @@
 <template>
-  <div class="item-component">
-    <div class="col-4">
-      <h3>{{ item.title }}</h3>
-    </div>
+  <div class="items-component col-3 shadow card rounded container-fluid mt-5">
+    <img :src="item.image" class="img-fluid justify-content-center" />
+    <h3>{{ item.title }}</h3>
+    <h4>${{ item.price }}</h4>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 import { computed } from 'vue'
 
 export default {
-  name: 'ItemComponent',
+  name: 'ItemsComponent',
   props: ['itemProp'],
   setup(props) {
     return {
@@ -22,5 +22,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+img{
+  width: 275px;
+  height: 275px;
+  object-fit: cover;
+}
 </style>

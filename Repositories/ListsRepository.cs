@@ -1,6 +1,6 @@
 namespace Amazen.Repositories
 {
-    public class ListItemRepository
+    public class ListsRepository
     {
         
     }

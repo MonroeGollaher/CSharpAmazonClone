@@ -7,10 +7,10 @@ using Amazen.Repositories;
 
 namespace Amazen.Services
 {
-  public class ItemService
+  public class ItemsService
   {
-    private readonly ItemRepository _repo;
-    public ItemService(ItemRepository repo)
+    private readonly ItemsRepository _repo;
+    public ItemsService(ItemsRepository repo)
     {
         _repo = repo;
     }

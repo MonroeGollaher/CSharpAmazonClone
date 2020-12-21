@@ -13,13 +13,13 @@ namespace Amazen.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
-    public class ItemController : ControllerBase
+    public class ItemsController : ControllerBase
     {
-        private readonly ItemService _is;
+        private readonly ItemsService _is;
 
-        public ItemController(ItemService itemService)
+        public ItemsController(ItemsService ItemsService)
         {
-            _is = itemService;
+            _is = ItemsService;
         }
         [HttpPost]
         [Authorize]

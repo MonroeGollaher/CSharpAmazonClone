@@ -1,10 +1,10 @@
 import { logger } from '../utils/Logger'
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
-class ItemService {
+class ItemsService {
   async getItems() {
     try {
-      const res = await api.get('api/item')
+      const res = await api.get('api/items')
       console.log(res.data)
       AppState.items = res.data
     } catch (error) {
@@ -12,4 +12,4 @@ class ItemService {
     }
   }
 }
-export const itemService = new ItemService()
+export const itemsService = new ItemsService()

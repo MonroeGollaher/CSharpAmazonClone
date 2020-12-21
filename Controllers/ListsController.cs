@@ -1,6 +1,6 @@
 namespace Amazen.Controllers
 {
-    public class ListItemController
+    public class ListsController
     {
         
     }

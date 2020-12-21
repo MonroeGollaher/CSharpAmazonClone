@@ -6,11 +6,11 @@ using Amazen.Models;
 
 namespace Amazen.Repositories
 {
-  public class ItemRepository
+  public class ItemsRepository
   {
     private readonly IDbConnection _db;
     private readonly string populateCreator = "SELECT item.*, profile.* FROM items item INNER JOIN profiles profile ON item.creatorId = profile.id ";
-    public ItemRepository(IDbConnection db)
+    public ItemsRepository(IDbConnection db)
     {
         _db = db;
     }
