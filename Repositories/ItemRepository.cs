@@ -19,7 +19,7 @@ namespace Amazen.Repositories
     {
       string sql = @"
       INSERT INTO items
-      (tite, body, image, price, salePrice, quantity, isAvailable, isPublished, id, creatorId)
+      (title, body, image, price, salePrice, quantity, isAvailable, isPublished, id, creatorId)
       VALUES
       (@Title, @Body, @Image, @Price, @SalePrice, @Quantity, @IsAvailable, @IsPublished, @Id, @CreatorId);
       SELECT LAST_INSERT_ID();";
