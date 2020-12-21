@@ -24,5 +24,14 @@ namespace Amazen.Services
     {
       return _repo.GetItems();
     }
+
+    internal string DeleteItem(int id)
+    {
+      if(_repo.DeleteItem(id))
+      {
+        return "The item has been deleted";
+      }
+      return "The item could not be deleted";
+    }
   }
 }

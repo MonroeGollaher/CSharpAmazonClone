@@ -17,9 +17,9 @@ namespace Amazen.Controllers
     {
         private readonly ItemsService _is;
 
-        public ItemsController(ItemsService ItemsService)
+        public ItemsController(ItemsService itemsService)
         {
-            _is = ItemsService;
+            _is = itemsService;
         }
         [HttpPost]
         [Authorize]
@@ -37,6 +37,19 @@ namespace Amazen.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<string> DeleteItem(int id)
+        {
+        try
+        {
+            return Ok(_is.DeleteItem(id));
+        }
+        catch (System.Exception error)
+        {
+            return BadRequest(error.Message);
+        }
         }
 
         [HttpGet]

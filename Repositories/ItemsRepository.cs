@@ -26,6 +26,16 @@ namespace Amazen.Repositories
       return _db.ExecuteScalar<int>(sql, newItem);
     }
 
+    internal bool DeleteItem(int id)
+    {
+      string sql = @"
+      DELETE FROM items
+      WHERE id = @Id
+      LIMIT 1";
+      int affectedRows = _db.Execute(sql, new { id });
+      return affectedRows > 0;
+    }
+
     internal object GetItems()
     {
       string sql = populateCreator + "WHERE isPublished = 1";
