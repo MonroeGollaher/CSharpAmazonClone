@@ -21,6 +21,7 @@ namespace Amazen.Controllers
         {
             _is = itemsService;
         }
+
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<Item>> CreateItem([FromBody] Item newItem)
@@ -32,6 +33,22 @@ namespace Amazen.Controllers
                 Item created = _is.CreateItem(newItem);
                 created.Creator = userInfo;
                 return Ok(created);
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<ActionResult<Item>> EditItem(int id, [FromBody] Item editedItem)
+        {
+            try
+            {
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                editedItem.Id = id;
+                return Ok(_is.EditItem(userInfo, editedItem));
             }
             catch (System.Exception e)
             {
@@ -64,5 +81,19 @@ namespace Amazen.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<Item>> GetById(int id)
+        {
+            try
+            {
+              return Ok(_is.GetById(id));  
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

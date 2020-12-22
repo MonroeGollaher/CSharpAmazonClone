@@ -33,5 +33,30 @@ namespace Amazen.Services
       }
       return "The item could not be deleted";
     }
+
+    internal Item GetById(int id)
+    {
+      return _repo.GetById(id);
+    }
+
+    internal Item EditItem(Profile userInfo, Item editedItem)
+    {
+      Item oldItem = _repo.GetById(editedItem.Id);
+      if ( oldItem == null)
+      {
+        throw new Exception("Bad Id");
+      }
+      if( oldItem.CreatorId != userInfo.Id)
+      {
+        throw new Exception("You are not the original poster : Access denied");
+      }
+      _repo.EditItem(editedItem);
+      return _repo.GetById(editedItem.Id);
+    }
+
+    internal IEnumerable<Item> GetItemsByProfile(string profId, string userId)
+    {
+      return _repo.GetItemsByProfile(profId).ToList().FindAll(i => i.CreatorId == userId || i.IsPublished);
+    }
   }
 }
