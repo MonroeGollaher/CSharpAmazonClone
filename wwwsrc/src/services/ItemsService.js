@@ -12,7 +12,17 @@ class ItemsService {
     }
   }
 
-  async deletItem(id) {
+  async addItem(itemData) {
+    try {
+      await api.post('api/items', itemData)
+      logger.log(itemData)
+      this.getItems()
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
+  async deleteItem(id) {
     try {
       await api.delete('/api/items/' + id)
       console.log('item deleted')

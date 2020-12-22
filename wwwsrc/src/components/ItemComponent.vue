@@ -11,7 +11,7 @@
         <i class="far fa-edit"></i>
       </button>
       <button class="btn bg-transparent text-success">
-        <i class="fas fa-plus"></i>
+        <i class="fas fa-list-ol"></i>
       </button>
     </div>
   </div>
@@ -28,7 +28,7 @@ export default {
     return {
       item: computed(() => props.itemProp),
       deleteItem(id) {
-        itemsService.deletItem(id)
+        itemsService.deleteItem(id)
       }
     }
   },

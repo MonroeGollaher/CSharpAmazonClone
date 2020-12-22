@@ -3,6 +3,7 @@
     <h1>Welcome, {{ profile.name }}!</h1>
     <img class="rounded-circle" :src="profile.picture" alt="" />
     <p>{{ profile.email }}</p>
+    <new-item-component />
   </div>
 </template>
 

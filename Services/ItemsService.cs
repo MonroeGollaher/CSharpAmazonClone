@@ -56,7 +56,7 @@ namespace Amazen.Services
 
     internal IEnumerable<Item> GetItemsByProfile(string profId, string userId)
     {
-      return _repo.GetItemsByProfile(profId).ToList().FindAll(i => i.CreatorId == userId || i.IsPublished);
+      return _repo.GetItemsByProfile(profId).ToList().FindAll(i => i.CreatorId == userId || i.IsAvailable);
     }
   }
 }

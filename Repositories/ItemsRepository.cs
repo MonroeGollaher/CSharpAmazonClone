@@ -19,9 +19,9 @@ namespace Amazen.Repositories
     {
       string sql = @"
       INSERT INTO items
-      (title, body, image, price, salePrice, quantity, isAvailable, isPublished, id, creatorId)
+      (title, body, image, price, salePrice, quantity, isAvailable, id, creatorId)
       VALUES
-      (@Title, @Body, @Image, @Price, @SalePrice, @Quantity, @IsAvailable, @IsPublished, @Id, @CreatorId);
+      (@Title, @Body, @Image, @Price, @SalePrice, @Quantity, @IsAvailable, @Id, @CreatorId);
       SELECT LAST_INSERT_ID();";
       return _db.ExecuteScalar<int>(sql, newItem);
     }
@@ -37,7 +37,7 @@ namespace Amazen.Repositories
 
     internal object GetItems()
     {
-      string sql = populateCreator + "WHERE isPublished = 1";
+      string sql = populateCreator;
       return _db.Query<Item, Profile, Item>(sql, (item, profile) => { item.Creator = profile; return item; }, splitOn: "id");
     }
 

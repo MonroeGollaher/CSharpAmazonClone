@@ -9,7 +9,6 @@ namespace Amazen.Models
         public decimal SalePrice { get; set; }
         public int Quantity { get; set; }
         public bool IsAvailable { get; set; }
-        public bool IsPublished { get; set; }
         public int Id { get; set; }
         public string CreatorId { get; set; }
         public Profile Creator { get; set; }
