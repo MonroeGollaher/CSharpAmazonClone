@@ -1,5 +1,5 @@
 <template>
-  <div class="new-item-component card shadow rounded">
+  <div class="new-item-component col-8 card shadow rounded container-fluid">
     <h2>New Item</h2>
     <form @submit.prevent="addItem">
       <div class="form-group">
@@ -23,7 +23,7 @@
       </div>
       <div class="form-group">
         <label for="image">Image</label>
-        <input type="text" placeholder="Picture" v-model="state.newItem.image">
+        <input type="text" class="form-control" placeholder="Picture" v-model="state.newItem.image">
       </div>
       <div class="form-group">
         <label for="price">Price</label>
@@ -53,7 +53,7 @@
         >
       </div>
       <div class="form-group">
-        <label for="image">Private?</label>
+        <label for="image">Published?</label>
         <input class="ml-3" type="checkbox" v-model="state.newItem.isAvailable">
       </div>
       <button type="submit" class="btn btn-primary mb-3">

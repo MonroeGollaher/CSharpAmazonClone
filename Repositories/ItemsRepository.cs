@@ -52,8 +52,7 @@ namespace Amazen.Repositories
       price = @Price,
       salePrice = @SalePrice,
       quantity = @Quantity,
-      isAvailable = @IsAvailable,
-      isPublished = @IsPublished
+      isAvailable = @IsAvailable
       WHERE id = @Id;";
       _db.Execute(sql, editedItem);
     }

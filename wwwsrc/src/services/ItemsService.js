@@ -31,5 +31,15 @@ class ItemsService {
       logger.error(error)
     }
   }
+
+  async editItem(editData, id) {
+    try {
+      await api.put('api/items/' + id, editData)
+      console.log(editData)
+      this.getItems()
+    } catch (error) {
+      logger.error(error)
+    }
+  }
 }
 export const itemsService = new ItemsService()
