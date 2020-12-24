@@ -1,19 +1,26 @@
 <template>
   <div class="items-component col-3 shadow card rounded container-fluid mt-5">
-    <img :src="item.image" class="img-fluid justify-content-center" />
-    <div class="mt-4">
-      <h3>{{ item.title }}</h3>
-      <h4>${{ item.price }}</h4>
-      <button @click="deleteItem(item.id)" class="btn bg-transparent text-danger">
-        <i class="fas fa-times"></i>
-      </button>
-      <button class="btn bg-transparent text-primary" data-toggle="modal" :data-target="'#editModal' + item.id">
-        <i class="far fa-edit"></i>
-      </button>
-      <button class="btn bg-transparent text-success">
-        <i class="fas fa-list-ol"></i>
-      </button>
-    </div>
+    <router-link :to="{name: 'ActiveItem', params: {id: item.id}}" class="text-dark no-decoration" @click="setActiveItem(item.id)">
+      <div class="row justify-content-center">
+        <img :src="item.image" class="img-fluid justify-content-center" />
+      </div>
+      <div class="mt-4">
+        <h3>{{ item.title }}</h3>
+        <h4>${{ item.price }}</h4>
+        <!-- Item buttons that will appear if a user is logged in -->
+        <!-- <div class="div" v-if="profile.id">
+          <button @click="deleteItem(item.id)" class="btn bg-transparent text-danger">
+            <i class="fas fa-times"></i>
+          </button>
+          <button class="btn bg-transparent text-primary" data-toggle="modal" :data-target="'#editModal' + item.id">
+            <i class="far fa-edit"></i>
+          </button>
+          <button class="btn bg-transparent text-success">
+            <i class="fas fa-list-ol"></i>
+          </button>
+        </div> -->
+      </div>
+    </router-link>
   </div>
 
   <!-- Modal -->
@@ -93,14 +100,6 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
-            Close
-          </button>
-          <button type="button" class="btn btn-primary">
-            Save changes
-          </button>
-        </div>
       </div>
     </div>
   </div>
@@ -109,6 +108,7 @@
 <script>
 import { computed, reactive } from 'vue'
 import { itemsService } from '../services/ItemsService'
+import { AppState } from '../AppState'
 
 export default {
   name: 'ItemsComponent',
@@ -121,11 +121,15 @@ export default {
     })
     return {
       item: computed(() => props.itemProp),
+      profile: computed(() => AppState.profile),
       deleteItem(id) {
         itemsService.deleteItem(id)
       },
       editItem(editedItem, id) {
         itemsService.editItem(state.editedItem, id)
+      },
+      setActiveItem(itemId) {
+        itemsService.setActiveItem(itemId)
       },
       state
     }
@@ -136,8 +140,8 @@ export default {
 
 <style lang="scss" scoped>
 img{
-  width: 275px;
-  height: 275px;
-  object-fit: cover;
+  max-width: 300px;
+  max-height: 300px;
+  // object-fit: cover;
 }
 </style>

@@ -3,7 +3,7 @@
     <h1>Welcome, {{ profile.name }}!</h1>
     <img class="rounded-circle" :src="profile.picture" alt="" />
     <p>{{ profile.email }}</p>
-    <div class="row">
+    <div class="row pb-3">
       <new-item-component />
     </div>
   </div>

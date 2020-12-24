@@ -41,5 +41,15 @@ class ItemsService {
       logger.error(error)
     }
   }
+
+  async setActiveItem(itemData) {
+    try {
+      debugger
+      const res = await api.get('api/items/' + itemData)
+      AppState.activeItem = res.data
+    } catch (error) {
+      logger.error(error)
+    }
+  }
 }
 export const itemsService = new ItemsService()

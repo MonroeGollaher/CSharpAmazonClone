@@ -1,5 +1,5 @@
 <template>
-  <div class="new-item-component col-8 card shadow rounded container-fluid">
+  <div class="new-item-component col-3 card shadow rounded container-fluid">
     <h2>New Item</h2>
     <form @submit.prevent="addItem">
       <div class="form-group">
