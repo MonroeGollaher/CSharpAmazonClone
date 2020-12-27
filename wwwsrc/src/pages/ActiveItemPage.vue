@@ -7,6 +7,7 @@
       <div class="col-8">
         <h3>{{ activeItem.title }}</h3>
         <h4>${{ activeItem.price }}</h4>
+        <p>{{ activeItem.body }}</p>
         <div class="div" v-if="profile.id">
           <button @click="deleteItem(activeItem.id)" class="btn bg-transparent text-danger">
             <i class="fas fa-times"></i>
