@@ -1,13 +1,20 @@
 <template>
-  <div class="about text-center container-fluid">
-    <h1>Welcome, {{ profile.name }}!</h1>
-    <img class="rounded-circle" :src="profile.picture" alt="" />
-    <p>{{ profile.email }}</p>
+  <div class="about container-fluid">
+    <div class="row justify-content-center mt-3">
+      <div class="col-4 card shadow">
+        <img class="rounded-circle mr-3" :src="profile.picture" alt="" />
+        <h5>Welcome, {{ profile.name }}!</h5>
+      </div>
+    </div>
+    <!-- <p>Email: {{ profile.email }}</p> -->
     <div class="row pb-3">
-      <new-item-component />
+      <div class="col-4">
+        <h3>My Lists:</h3>
+        <list-component v-for="list in lists" :key="list.id" :list-prop="list" />
+      </div>
     </div>
     <div class="row pb-3">
-      <list-component v-for="list in lists" :key="list.id" :list-prop="list" />
+      <new-item-component />
     </div>
   </div>
 </template>
@@ -33,6 +40,6 @@ export default {
 
 <style scoped>
 img {
-  max-width: 100px;
+  max-width: 50px;
 }
 </style>

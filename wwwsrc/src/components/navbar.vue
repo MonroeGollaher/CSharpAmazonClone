@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark nav">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <h3 class="">
@@ -18,19 +18,7 @@
     >
       <span class="navbar-toggler-icon" />
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <router-link :to="{ name: 'Home' }" class="nav-link">
-            Store
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link :to="{ name: 'Profile' }" class="nav-link">
-            Profile
-          </router-link>
-        </li>
-      </ul>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarText">
       <span class="navbar-text">
         <button
           class="btn btn-outline-primary text-uppercase"
@@ -45,13 +33,13 @@
             class="dropdown-toggle"
             @click="state.dropOpen = !state.dropOpen"
           >
-            <img
+            <!-- <img
               :src="user.picture"
               alt="user photo"
               height="40"
               class="rounded-circle"
-            />
-            <span class="mx-3">{{ user.name }}</span>
+            /> -->
+            <span class="mx-2">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -74,6 +62,41 @@
       </span>
     </div>
   </nav>
+
+  <div class="row justify-content-around bottom-nav d-flex">
+    <div class="col-3">
+      <div class="row justify-content-center my-2">
+        <div class="col-4">
+          <router-link :to="{ name: 'Home' }" class="nav-link">
+            Store
+          </router-link>
+        </div>
+        <div class="col-4">
+          <router-link :to="{ name: 'Profile' }" class="nav-link">
+            Profile
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 py-2">
+      <form @submit="search">
+        <div class="">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for an item...">
+          <div id="emailHelp" class="form-text">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-3">
+      <div class="row justify-content-center">
+        <div class="col-6 my-2">
+          <button type="submit" class="btn btn-primary border-0">
+            Add Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -113,16 +136,13 @@ export default {
 .hoverable {
   cursor: pointer;
 }
-a:hover {
-  text-decoration: none;
+.nav {
+  background: rgb(255, 165, 90)
 }
-.nav-link{
-  text-transform: uppercase;
+.bottom-nav{
+  background: rgb(219, 146, 84);
 }
-.nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
-}
-nav {
-  background-color: (255, 185, 90);
+.nav-link {
+  color: white;
 }
 </style>

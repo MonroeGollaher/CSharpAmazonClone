@@ -134,5 +134,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+img {
+  width: 400px;
+  height: 300px;
+}
 </style>
