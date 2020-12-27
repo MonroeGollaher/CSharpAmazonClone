@@ -35,17 +35,15 @@ class ItemsService {
   async editItem(editData, id) {
     try {
       await api.put('api/items/' + id, editData)
-      console.log(editData)
       this.getItems()
     } catch (error) {
       logger.error(error)
     }
   }
 
-  async setActiveItem(itemData) {
+  async setActiveItem(itemId) {
     try {
-      debugger
-      const res = await api.get('api/items/' + itemData)
+      const res = await api.get('api/items/' + itemId)
       AppState.activeItem = res.data
     } catch (error) {
       logger.error(error)
