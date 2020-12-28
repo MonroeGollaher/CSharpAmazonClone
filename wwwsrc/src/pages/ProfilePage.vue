@@ -1,23 +1,37 @@
 <template>
   <div class="about container-fluid">
-    <div class="row justify-content-center mt-3">
-      <div class="col-4 py-2 card shadow">
-        <h5><img class="rounded-circle mr-3" :src="profile.picture" alt="" />Welcome, {{ profile.name }}!</h5>
+    <div class="row justify-content-center mt-3 text-center">
+      <div class="col-3 py-2 card shadow radius15">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <img class="rounded-circle" :src="profile.picture" alt="" />
+          </div>
+          <div class="col-12">
+            <h5 class="pt-2">
+              Welcome, {{ profile.name }}!
+            </h5>
+          </div>
+          <div class="col-6 py-3">
+            <new-list-component />
+          </div>
+          <div class="col-6 py-3">
+            <new-item-component />
+          </div>
+        </div>
       </div>
     </div>
-    <!-- <p>Email: {{ profile.email }}</p> -->
-    <div class="row pb-3">
+
+    <div class="row justify-content-center pb-3">
       <div class="col-4">
         <h3>My Lists:</h3>
         <list-component v-for="list in lists" :key="list.id" :list-prop="list" />
       </div>
+      <div class="col-2">
+      </div>
+      <div class="col-4">
+        <h3>My Products:</h3>
+      </div>
     </div>
-    <div class="row pb-3">
-      <new-item-component />
-    </div>
-  </div>
-  <div class="row pb-3">
-    <new-list-component />
   </div>
 </template>
 
@@ -44,5 +58,11 @@ export default {
 <style scoped>
 img {
   max-width: 50px;
+}
+button:hover {
+  outline: 1px solid#2f2f2f;
+}
+.radius15 {
+  border-radius: 15px;
 }
 </style>

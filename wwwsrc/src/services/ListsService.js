@@ -24,8 +24,18 @@ class ListsService {
 
   async deleteList(id) {
     try {
-      await api.delete('api/lists' + id)
+      await api.delete('api/lists/' + id)
       logger.log('list deleted')
+      this.getLists()
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
+  async editList(editData, id) {
+    try {
+      await api.put('api/lists/' + id, editData)
+      logger.log('edited')
       this.getLists()
     } catch (error) {
       logger.error(error)

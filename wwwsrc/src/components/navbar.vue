@@ -90,9 +90,7 @@
     <div class="col-3">
       <div class="row justify-content-center">
         <div class="col-6 my-2">
-          <button type="submit" class="btn btn-primary border-0">
-            Add Product
-          </button>
+          <new-item-component />
         </div>
       </div>
     </div>
