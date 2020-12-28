@@ -118,6 +118,7 @@ export default {
       }
     })
     return {
+      state,
       profile: computed(() => AppState.profile),
       activeItem: computed(() => AppState.activeItem),
       deleteItem(id) {
@@ -125,8 +126,7 @@ export default {
       },
       editItem(editedItem, id) {
         itemsService.editItem(state.editedItem, id)
-      },
-      state
+      }
     }
   },
   components: {}

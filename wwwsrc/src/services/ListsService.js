@@ -16,6 +16,7 @@ class ListsService {
   async createList(listData) {
     try {
       await api.post('api/lists', listData)
+      this.getLists()
     } catch (error) {
       logger.error(error)
     }
