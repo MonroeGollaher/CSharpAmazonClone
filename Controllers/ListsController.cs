@@ -35,6 +35,19 @@ namespace Amazen.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<Item>> GetById(int id)
+        {
+            try
+            {
+              return Ok(_ls.GetById(id));  
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [HttpPost]
         [Authorize]
         public async Task<ActionResult<List>> CreateList([FromBody] List newList)
@@ -47,6 +60,35 @@ namespace Amazen.Controllers
                 created.Creator = userInfo;
                 return Ok(created);
 
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<ActionResult<List>> EditList(int id, [FromBody] List editedList)
+        {
+            try
+            {
+                Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+                editedList.Id = id;
+                return Ok(_ls.EditList(userInfo, editedList));
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<string> DeleteList(int id)
+        {
+            try
+            {
+               return Ok(_ls.DeleteList(id)); 
             }
             catch (System.Exception e)
             {

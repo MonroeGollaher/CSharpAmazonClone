@@ -21,5 +21,35 @@ namespace Amazen.Services
     {
       return _repo.GetLists();
     }
+
+    internal object DeleteList(int id)
+    {
+      if(_repo.DeleteList(id))
+      {
+        return "List deleted";
+      }
+      return "List couldn't be deleted";
+    }
+
+    internal object GetById(int id)
+    {
+      return _repo.GetById(id);
+    }
+
+    internal List EditList(Profile userInfo, List editedList)
+    {
+      List oldList = _repo.GetById(editedList.Id);
+      if (oldList == null)
+      {
+        throw new Exception("Bad Id");
+      }
+      if (oldList.CreatorId != userInfo.Id)
+      {
+        throw new Exception("You are not the original poster : Access denied");
+      }
+      _repo.EditList(editedList);
+      return _repo.GetById(editedList.Id);
+
+    }
   }
 }

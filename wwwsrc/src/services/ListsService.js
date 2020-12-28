@@ -21,6 +21,16 @@ class ListsService {
       logger.error(error)
     }
   }
+
+  async deleteList(id) {
+    try {
+      await api.delete('api/lists' + id)
+      logger.log('list deleted')
+      this.getLists()
+    } catch (error) {
+      logger.error(error)
+    }
+  }
 }
 
 export const listsService = new ListsService()
