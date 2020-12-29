@@ -18,15 +18,6 @@
           <button class="btn bg-transparent text-success">
             <i class="fas fa-list-ol"></i>
           </button>
-
-          <!-- <select @change.prevent="addToList" v-model="state.listId">
-            <option disabled value="">
-              Add to list...
-            </option>
-            <option class="text-light" v-for="l in lists" :key="l.id" :value="l.id">
-              {{ l.title }}
-            </option>
-          </select> -->
         </div>
       </div>
     </div>
@@ -36,7 +27,7 @@
       <select v-model="state.listId"
               name=""
               id=""
-              class="m-2 w-75"
+              class=""
               data-option-label="Select a List"
               required
       >
@@ -49,7 +40,7 @@
       </select>
     </div>
     <div class="row justify-content-center">
-      <button type="submit" class="btn btn-outline-dark btn-light w-75 m-2 border-dark" v-if="profile.id">
+      <button type="submit" class="btn btn-primary" v-if="profile.id">
         Add to Wishlist
       </button>
     </div>
