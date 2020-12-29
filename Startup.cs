@@ -69,6 +69,8 @@ namespace Amazen
       services.AddTransient<ItemsRepository>();
       services.AddTransient<ListsService>();
       services.AddTransient<ListsRepository>();
+      services.AddTransient<ListItemsService>();
+      services.AddTransient<ListItemsRepository>();
     }
 
     private IDbConnection CreateDbConnection()

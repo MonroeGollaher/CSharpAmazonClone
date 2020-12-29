@@ -18,10 +18,42 @@
           <button class="btn bg-transparent text-success">
             <i class="fas fa-list-ol"></i>
           </button>
+
+          <!-- <select @change.prevent="addToList" v-model="state.listId">
+            <option disabled value="">
+              Add to list...
+            </option>
+            <option class="text-light" v-for="l in lists" :key="l.id" :value="l.id">
+              {{ l.title }}
+            </option>
+          </select> -->
         </div>
       </div>
     </div>
   </div>
+  <form class="form" @submit.prevent="addToList(activeItem.id, state.listId)">
+    <div class="row justify-content-center">
+      <select v-model="state.listId"
+              name=""
+              id=""
+              class="m-2 w-75"
+              data-option-label="Select a List"
+              required
+      >
+        <option disabled value="">
+          Select a List
+        </option>
+        <option v-for="list in lists" :key="list.id" :value="list.id">
+          {{ list.title }}
+        </option>
+      </select>
+    </div>
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-outline-dark btn-light w-75 m-2 border-dark" v-if="profile.id">
+        Add to Wishlist
+      </button>
+    </div>
+  </form>
 
   <!-- Modal -->
   <div class="modal fade"
@@ -106,19 +138,26 @@
 </template>
 
 <script>
-import { computed, reactive } from 'vue'
+import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { itemsService } from '../services/ItemsService'
+import { listItemsService } from '../services/ListItemService'
+import { listsService } from '../services/ListsService'
 export default {
   name: 'Activeitem',
   setup() {
     const state = reactive({
       editedItem: {
 
-      }
+      },
+      listId: null
+    })
+    onMounted(() => {
+      listsService.getLists()
     })
     return {
       state,
+      lists: computed(() => AppState.lists),
       profile: computed(() => AppState.profile),
       activeItem: computed(() => AppState.activeItem),
       deleteItem(id) {
@@ -126,6 +165,13 @@ export default {
       },
       editItem(editedItem, id) {
         itemsService.editItem(state.editedItem, id)
+      },
+      async addToList(listId, itemId) {
+        const newItem = {
+          listId: listId,
+          itemId: itemId
+        }
+        listItemsService.addItemToList(newItem)
       }
     }
   },
