@@ -5,8 +5,19 @@ class ItemsService {
   async getItems() {
     try {
       const res = await api.get('api/items')
-      console.log(res.data)
       AppState.items = res.data
+      console.log(res.data)
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
+  async getUserItems() {
+    try {
+      // @ts-ignore
+      const res = await api.get('profile/' + AppState.profile.id + '/items')
+      AppState.myItems = res.data
+      console.log(res.data)
     } catch (error) {
       logger.error(error)
     }

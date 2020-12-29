@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="row justify-content-center pb-3">
+    <div class="row justify-content-center py-5">
       <div class="col-4">
         <h3>My Lists:</h3>
         <list-component v-for="list in lists" :key="list.id" :list-prop="list" />
@@ -30,6 +30,11 @@
       </div>
       <div class="col-4">
         <h3>My Products:</h3>
+        <div class="row">
+          <div class="col-6">
+            <user-items-component v-for="u in userItems" :key="u.id" :user-item-prop="u" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -40,16 +45,20 @@ import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { listsService } from '../services/ListsService'
 import NewListComponent from '../components/NewListComponent'
+import UserItemsComponent from '../components/UserItemsComponent'
+import { itemsService } from '../services/ItemsService'
 export default {
   name: 'Profile',
-  components: { NewListComponent },
+  components: { NewListComponent, UserItemsComponent },
   setup() {
     onMounted(async() => {
       await listsService.getLists()
+      await itemsService.getUserItems()
     })
     return {
       profile: computed(() => AppState.profile),
-      lists: computed(() => AppState.lists)
+      lists: computed(() => AppState.lists),
+      userItems: computed(() => AppState.myItems)
     }
   }
 }
@@ -64,5 +73,8 @@ button:hover {
 }
 .radius15 {
   border-radius: 15px;
+}
+h3 {
+  text-decoration: underline;
 }
 </style>
