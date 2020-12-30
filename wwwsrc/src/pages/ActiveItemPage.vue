@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <form class="form" @submit.prevent="addToList(activeItem.id, state.listId)">
+  <form class="form" @submit.prevent="addToList(state.listId, activeItem.id)">
     <div class="row justify-content-center">
       <select v-model="state.listId"
               name=""
@@ -157,11 +157,11 @@ export default {
       editItem(editedItem, id) {
         itemsService.editItem(state.editedItem, id)
       },
-      addToList(itemId, listId) {
+      addToList(listId, itemId) {
         debugger
         const newItem = {
-          itemId: itemId,
-          listId: listId
+          listId: listId,
+          itemId: itemId
         }
         listItemsService.addItemToList(newItem)
       }

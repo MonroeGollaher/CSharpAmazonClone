@@ -18,9 +18,9 @@ namespace Amazen.Repositories
     {
       string sql = @"
       INSERT INTO listitems
-      (listId, itemId, creatorId)
+      (listId, itemId, creatorId, id)
       VALUES
-      (@ListId, @ItemId, @CreatorId);
+      (@ListId, @ItemId, @CreatorId, @Id);
       SELECT LAST_INSERT_ID();";
       return _db.ExecuteScalar<int>(sql, newLi);
     }

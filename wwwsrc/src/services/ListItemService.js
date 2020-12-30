@@ -7,7 +7,7 @@ class ListItemsService {
     try {
       await api.post('api/listitems', listItem)
       console.log(listItem)
-      this.getAllListItems()
+      // this.getAllListItems()
     } catch (error) {
       logger.error(error)
     }

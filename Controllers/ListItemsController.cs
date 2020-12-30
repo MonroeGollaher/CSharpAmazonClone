@@ -29,7 +29,9 @@ namespace Amazen.Controllers
             {
                 Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
                 newLi.CreatorId = userInfo.Id;
-                return Ok(_lis.CreateListItem(newLi));
+                ListItem created = _lis.CreateListItem(newLi);
+                newLi.Creator = userInfo;
+                return Ok(created);
             }
             catch (System.Exception e)
             {
