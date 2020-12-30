@@ -37,6 +37,9 @@
         </div>
       </div>
     </div>
+    <!-- <div class="row">
+      <list-items-component v-for="li in listItems" :key="'li'+li.id" :list-item-prop="li" />
+    </div> -->
   </div>
 </template>
 
@@ -46,7 +49,9 @@ import { AppState } from '../AppState'
 import { listsService } from '../services/ListsService'
 import NewListComponent from '../components/NewListComponent'
 import UserItemsComponent from '../components/UserItemsComponent'
+// import ListItemsComponent from '../components/ListItemComponent'
 import { itemsService } from '../services/ItemsService'
+import { listItemsService } from '../services/ListItemService'
 export default {
   name: 'Profile',
   components: { NewListComponent, UserItemsComponent },
@@ -54,10 +59,12 @@ export default {
     onMounted(async() => {
       await listsService.getLists()
       await itemsService.getUserItems()
+      await listItemsService.getAllListItems()
     })
     return {
       profile: computed(() => AppState.profile),
       lists: computed(() => AppState.lists),
+      listItems: computed(() => AppState.listItems),
       userItems: computed(() => AppState.myItems)
     }
   }

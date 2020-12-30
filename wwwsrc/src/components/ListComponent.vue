@@ -2,7 +2,9 @@
   <div class="list-component container-fluid">
     <div class="row justify-content-between align-items-center border-rounded bg-light shadow radius15 my-3 p-4">
       <div class="col-8 d-flex align-items-center">
-        <h5>{{ list.title }}</h5>
+        <h5 @click="getActiveListItems(list.id)">
+          {{ list.title }}
+        </h5>
       </div>
       <div class="col-3 d-flex align-items-center">
         <button @click="deleteList(list.id)" class="btn bg-transparent text-dark">
@@ -49,6 +51,7 @@
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { listsService } from '../services/ListsService'
+import { listItemsService } from '../services/ListItemService'
 export default {
   name: 'ListComponent',
   props: ['listProp'],
@@ -67,6 +70,9 @@ export default {
       },
       editList(editData, id) {
         listsService.editList(editData, id)
+      },
+      getActiveListItems(listId) {
+        listItemsService.getActiveListItems(listId)
       }
     }
   },

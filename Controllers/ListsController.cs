@@ -17,9 +17,11 @@ namespace Amazen.Controllers
     public class ListsController : ControllerBase
     {
         private readonly ListsService _ls;
-        public ListsController(ListsService ls)
+        private readonly ListItemsService _lis;
+        public ListsController(ListsService ls, ListItemsService lis)
         {
             _ls = ls;
+            _lis = lis;
         }
 
         [HttpGet]
@@ -41,6 +43,19 @@ namespace Amazen.Controllers
             try
             {
               return Ok(_ls.GetById(id));  
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("{id}/listitems")]
+        public ActionResult<IEnumerable<List>> GetItemsByList(int id)
+        {
+            try
+            {
+                return Ok(_lis.GetItemsByList(id));
             }
             catch (System.Exception e)
             {

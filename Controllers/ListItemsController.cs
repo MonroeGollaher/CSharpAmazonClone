@@ -55,14 +55,14 @@ namespace Amazen.Controllers
         [HttpDelete("{id}")]
         public ActionResult<string> DeleteListItem(int id)
         {
-        try
-        {
-            return Ok(_lis.DeleteListItem(id));
-        }
-        catch (System.Exception error)
-        {
-            return BadRequest(error.Message);
-        }
+            try
+            {
+                return Ok(_lis.DeleteListItem(id));
+            }
+            catch (System.Exception error)
+            {
+                return BadRequest(error.Message);
+            }
         }
 
     }

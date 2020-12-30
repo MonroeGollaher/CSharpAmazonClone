@@ -6,7 +6,6 @@ class ListItemsService {
   async addItemToList(listItem) {
     try {
       await api.post('api/listitems', listItem)
-      console.log(listItem)
       this.getAllListItems()
     } catch (error) {
       logger.error(error)
@@ -17,7 +16,16 @@ class ListItemsService {
     try {
       const res = await api.get('api/listitems')
       AppState.listItems = res.data
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
+  async getActiveListItems(listId) {
+    try {
+      const res = await api.get('api/lists/' + listId + '/listItems')
       console.log(res.data)
+      AppState.activeListItems = res.data
     } catch (error) {
       logger.error(error)
     }

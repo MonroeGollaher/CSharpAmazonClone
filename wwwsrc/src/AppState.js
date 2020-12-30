@@ -8,6 +8,7 @@ export const AppState = reactive({
   lists: [],
   activeItem: {},
   activeList: {},
+  activeListItems: [],
   myItems: [],
   myLists: [],
   listItems: []
