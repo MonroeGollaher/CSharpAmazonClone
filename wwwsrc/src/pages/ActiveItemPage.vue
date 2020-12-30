@@ -40,7 +40,7 @@
       </select>
     </div>
     <div class="row justify-content-center">
-      <button type="submit" class="btn btn-primary" v-if="profile.id">
+      <button type="submit" class="btn btn-success" v-if="profile.id">
         Add to Wishlist
       </button>
     </div>
