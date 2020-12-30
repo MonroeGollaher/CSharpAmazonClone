@@ -22,5 +22,19 @@ namespace Amazen.Services
     {
         return _repo.GetItemsByList(id);
     }
+
+    internal object GetAllListItems()
+    {
+      return _repo.GetAllListItems();
+    }
+
+    internal string DeleteListItem(int id)
+    {
+      if(_repo.DeleteListItem(id))
+      {
+        return "The list item has been deleted";
+      }
+      return "The list item could not be deleted";
+    }
   }
 }

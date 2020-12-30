@@ -38,5 +38,32 @@ namespace Amazen.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<ListItem>> GetAllListItems()
+        {
+            try
+            {
+                return Ok(_lis.GetAllListItems());
+            }
+            catch (System.Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult<string> DeleteListItem(int id)
+        {
+        try
+        {
+            return Ok(_lis.DeleteListItem(id));
+        }
+        catch (System.Exception error)
+        {
+            return BadRequest(error.Message);
+        }
+        }
+
     }
 }
