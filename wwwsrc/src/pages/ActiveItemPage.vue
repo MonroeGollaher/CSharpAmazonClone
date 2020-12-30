@@ -157,10 +157,11 @@ export default {
       editItem(editedItem, id) {
         itemsService.editItem(state.editedItem, id)
       },
-      async addToList(listId, itemId) {
+      addToList(itemId, listId) {
+        debugger
         const newItem = {
-          listId: listId,
-          itemId: itemId
+          itemId: itemId,
+          listId: listId
         }
         listItemsService.addItemToList(newItem)
       }

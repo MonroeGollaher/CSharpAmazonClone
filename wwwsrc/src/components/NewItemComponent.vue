@@ -1,6 +1,6 @@
 <template>
   <div class="new-item-component container-fluid">
-    <button class="btn border-0 bg-transparent rounded" data-toggle="modal" data-target="#newItemModal">
+    <button class="btn border-0 btn-primary rounded" data-toggle="modal" data-target="#newItemModal">
       <p>Add Item<i class="fas fa-plus ml-3 text-success"></i></p>
     </button>
     <div class="modal" tabindex="-1" id="newItemModal">
