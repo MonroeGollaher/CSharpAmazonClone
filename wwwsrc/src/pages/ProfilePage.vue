@@ -31,15 +31,12 @@
       <div class="col-4">
         <h3>My Products:</h3>
         <div class="row">
-          <div class="col-6">
+          <div class="col-9">
             <user-items-component v-for="u in userItems" :key="u.id" :user-item-prop="u" />
           </div>
         </div>
       </div>
     </div>
-    <!-- <div class="row">
-      <list-items-component v-for="li in listItems" :key="'li'+li.id" :list-item-prop="li" />
-    </div> -->
   </div>
 </template>
 
@@ -48,13 +45,13 @@ import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { listsService } from '../services/ListsService'
 import NewListComponent from '../components/NewListComponent'
+import ListComponent from '../components/ListComponent'
 import UserItemsComponent from '../components/UserItemsComponent'
-// import ListItemsComponent from '../components/ListItemComponent'
 import { itemsService } from '../services/ItemsService'
 import { listItemsService } from '../services/ListItemService'
 export default {
   name: 'Profile',
-  components: { NewListComponent, UserItemsComponent },
+  components: { NewListComponent, UserItemsComponent, ListComponent },
   setup() {
     onMounted(async() => {
       await listsService.getLists()

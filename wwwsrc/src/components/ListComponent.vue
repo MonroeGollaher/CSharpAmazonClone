@@ -2,9 +2,11 @@
   <div class="list-component container-fluid">
     <div class="row justify-content-between align-items-center border-rounded bg-light shadow radius15 my-3 p-4">
       <div class="col-8 d-flex align-items-center">
-        <h5 @click="getActiveListItems(list.id)">
-          {{ list.title }}
-        </h5>
+        <router-link :to="{name: 'ActiveList', params: {id: list.id}}" @click="setActiveList(list.id)">
+          <h5 class="text-dark">
+            {{ list.title }}
+          </h5>
+        </router-link>
       </div>
       <div class="col-3 d-flex align-items-center">
         <button @click="deleteList(list.id)" class="btn bg-transparent text-dark">
@@ -13,9 +15,9 @@
         <button class="btn bg-transparent text-dark ml-1" data-toggle="modal" :data-target="'#editListModal' + list.id">
           <i class="far fa-edit"></i>
         </button>
-        <!-- <button class="btn bg-transparent text-dark ml-1">
+        <button class="btn bg-transparent text-dark ml-1">
           <i class="fas fa-list-ol"></i>
-        </button> -->
+        </button>
       </div>
     </div>
   </div>
@@ -51,7 +53,6 @@
 import { computed, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { listsService } from '../services/ListsService'
-import { listItemsService } from '../services/ListItemService'
 export default {
   name: 'ListComponent',
   props: ['listProp'],
@@ -71,8 +72,8 @@ export default {
       editList(editData, id) {
         listsService.editList(editData, id)
       },
-      getActiveListItems(listId) {
-        listItemsService.getActiveListItems(listId)
+      setActiveList(listId) {
+        listsService.setActiveList(listId)
       }
     }
   },

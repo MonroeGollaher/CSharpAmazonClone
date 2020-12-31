@@ -1,7 +1,9 @@
 <template>
   <div class="useritems-component container-fluid">
-    <div class="border-rounded bg-light shadow radius15 my-3 p-4">
-      <h5>{{ userItem.title }}</h5>
+    <div class="row">
+      <div class="col-6 d-flex flex-column border-rounded bg-light shadow radius15 my-3 p-4">
+        <h5>{{ userItem.title }}</h5>
+      </div>
     </div>
   </div>
 </template>

@@ -18,34 +18,33 @@
           <button class="btn bg-transparent text-success">
             <i class="fas fa-list-ol"></i>
           </button>
+          <form class="form" @submit.prevent="addToList(state.listId, activeItem.id)">
+            <div class="row justify-content-center">
+              <select v-model="state.listId"
+                      name=""
+                      id=""
+                      class=""
+                      data-option-label="Select a List"
+                      required
+              >
+                <option disabled value="">
+                  Select a List
+                </option>
+                <option v-for="list in lists" :key="list.id" :value="list.id">
+                  {{ list.title }}
+                </option>
+              </select>
+            </div>
+            <div class="row justify-content-center">
+              <button type="submit" class="btn btn-success" v-if="profile.id">
+                Add to Wishlist
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  <form class="form" @submit.prevent="addToList(state.listId, activeItem.id)">
-    <div class="row justify-content-center">
-      <select v-model="state.listId"
-              name=""
-              id=""
-              class=""
-              data-option-label="Select a List"
-              required
-      >
-        <option disabled value="">
-          Select a List
-        </option>
-        <option v-for="list in lists" :key="list.id" :value="list.id">
-          {{ list.title }}
-        </option>
-      </select>
-    </div>
-    <div class="row justify-content-center">
-      <button type="submit" class="btn btn-success" v-if="profile.id">
-        Add to Wishlist
-      </button>
-    </div>
-  </form>
-
   <!-- Modal -->
   <div class="modal fade"
        :id="'editModal' + activeItem.id"
@@ -158,7 +157,6 @@ export default {
         itemsService.editItem(state.editedItem, id)
       },
       addToList(listId, itemId) {
-        debugger
         const newItem = {
           listId: listId,
           itemId: itemId

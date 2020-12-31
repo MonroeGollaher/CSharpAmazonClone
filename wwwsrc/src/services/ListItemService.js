@@ -24,8 +24,17 @@ class ListItemsService {
   async getActiveListItems(listId) {
     try {
       const res = await api.get('api/lists/' + listId + '/listItems')
-      console.log(res.data)
       AppState.activeListItems = res.data
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
+  async removeFromList(itemId, listItemId) {
+    try {
+      await api.delete('api/listitems/' + listItemId)
+      const item = AppState.activeListItems.findIndex(i => i.id === itemId)
+      AppState.activeListItems.splice(item, 1)
     } catch (error) {
       logger.error(error)
     }

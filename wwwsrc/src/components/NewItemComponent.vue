@@ -1,7 +1,9 @@
 <template>
   <div class="new-item-component container-fluid">
-    <button class="btn border-0 btn-primary rounded" data-toggle="modal" data-target="#newItemModal">
-      <p>Add Item<i class="fas fa-plus ml-3 text-success"></i></p>
+    <button class="btn border-0 rounded" data-toggle="modal" data-target="#newItemModal">
+      <p class="text-dark ">
+        Add Item<i class="fas fa-plus ml-3 text-success"></i>
+      </p>
     </button>
     <div class="modal" tabindex="-1" id="newItemModal">
       <div class="modal-dialog">
@@ -10,9 +12,11 @@
             <h5 class="modal-title">
               Post an item
             </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close bg-transparent border-0 text-danger" data-bs-dismiss="modal" aria-label="Close">
+              <i class="far fa-times-circle"></i>
+            </button>
           </div>
-          <form @submit.prevent="addItem">
+          <form @submit.prevent="addItem" class="p-2">
             <div class="form-group">
               <label for="itemTitle">Product title</label>
               <input type="text"
@@ -63,13 +67,16 @@
                      v-model="state.newItem.quantity"
               >
             </div>
-            <div class="form-group">
+            <div class="row justify-content-center">
               <label for="image">Published?</label>
-              <input class="ml-3" type="checkbox" v-model="state.newItem.isAvailable">
+              <input class="ml-3 p-2 m-1" type="checkbox" v-model="state.newItem.isAvailable">
             </div>
-            <button type="submit" class="btn btn-primary mb-3">
-              Add Item
-            </button>
+            <div class="row justify-content-center">
+              <button type="submit" class="btn btn-primary text-light radius15 p-2">
+                Add Item
+                <i class="fas fa-check ml-2"></i>
+              </button>
+            </div>
           </form>
         </div>
       </div>

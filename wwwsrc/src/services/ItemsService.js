@@ -6,7 +6,6 @@ class ItemsService {
     try {
       const res = await api.get('api/items')
       AppState.items = res.data
-      console.log(res.data)
     } catch (error) {
       logger.error(error)
     }
@@ -17,7 +16,6 @@ class ItemsService {
       // @ts-ignore
       const res = await api.get(`profile/${AppState.profile.id}/items`)
       AppState.myItems = res.data
-      console.log(res.data)
     } catch (error) {
       logger.error(error)
     }
@@ -26,7 +24,6 @@ class ItemsService {
   async addItem(itemData) {
     try {
       await api.post('api/items', itemData)
-      logger.log(itemData)
       this.getItems()
     } catch (error) {
       logger.error(error)
@@ -36,7 +33,6 @@ class ItemsService {
   async deleteItem(id) {
     try {
       await api.delete('/api/items/' + id)
-      console.log('item deleted')
       this.getItems()
     } catch (error) {
       logger.error(error)

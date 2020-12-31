@@ -26,6 +26,11 @@ const routes = [
     path: '/activeitem/:id',
     name: 'ActiveItem',
     component: loadPage('ActiveItemPage')
+  },
+  {
+    path: '/activelist/:id',
+    name: 'ActiveList',
+    component: loadPage('ActiveListPage')
   }
 ]
 

@@ -39,7 +39,7 @@
               height="40"
               class="rounded-circle"
             /> -->
-            <span class="mx-2">{{ user.name }}</span>
+            <span class="mx-2 text-light">{{ user.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
@@ -62,10 +62,9 @@
       </span>
     </div>
   </nav>
-
-  <div class="row justify-content-around bottom-nav d-flex">
+  <div class="row justify-content-around align-items-center bottom-nav d-flex">
     <div class="col-3">
-      <div class="row justify-content-center my-2">
+      <div class="row justify-content-center  align-items-center">
         <div class="col-4">
           <router-link :to="{ name: 'Home' }" class="nav-link">
             Store
@@ -78,7 +77,7 @@
         </div>
       </div>
     </div>
-    <div class="col-6 py-2">
+    <div class="col-6">
       <form @submit="search">
         <div class="">
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search for an item...">
@@ -88,8 +87,8 @@
       </form>
     </div>
     <div class="col-3">
-      <div class="row justify-content-center">
-        <div class="col-6 my-2">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-6 mt-1">
           <new-item-component />
         </div>
       </div>

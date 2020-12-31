@@ -10,9 +10,11 @@
             <h5 class="modal-title">
               New wish list
             </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close bg-transparent border-0 text-danger" data-bs-dismiss="modal" aria-label="Close">
+              <i class="far fa-times-circle"></i>
+            </button>
           </div>
-          <form @submit.prevent="createList">
+          <form @submit.prevent="createList" class="p-2">
             <div class="form-group">
               <label for="itemTitle">List title</label>
               <input type="text"
@@ -23,13 +25,16 @@
                      v-model="state.newList.title"
               >
             </div>
-            <div class="form-group">
+            <div class="row justify-content-center align-items-center">
               <label for="image">Published?</label>
               <input class="ml-3" type="checkbox" v-model="state.newList.isPublished">
             </div>
-            <button type="submit" class="btn btn-primary mb-3">
-              Add List
-            </button>
+            <div class="row justify-content-center">
+              <button type="submit" class="btn btn-primary mb-3">
+                Add List
+                <i class="fas fa-check ml-2"></i>
+              </button>
+            </div>
           </form>
         </div>
       </div>

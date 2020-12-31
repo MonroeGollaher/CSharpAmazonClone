@@ -1,13 +1,10 @@
 <template>
-  <div class="items-component col-3 shadow card rounded container-fluid mt-5">
-    <router-link :to="{name: 'ActiveItem', params: {id: item.id}}" class="text-dark no-decoration" @click="setActiveItem(item.id)">
-      <div class="row justify-content-center">
-        <div class="col-12 items">
-          <img :src="item.image" class="img-fluid justify-content-center itemImg" />
-          <div class="mt-4 to-hover">
-            <h3>{{ item.title }}</h3>
-            <h4>${{ item.price }}</h4>
-          </div>
+  <div class="items-component col-2 shadow card rounded container-fluid mt-5">
+    <router-link :to="{name: 'ActiveItem', params: {id: item.id}}" @click="setActiveItem(item.id)">
+      <div class="items itemImage" :style="'background-image: url('+item.image+')'">
+        <div class="mt-4 to-hover">
+          <h3>{{ item.title }}</h3>
+          <h4>${{ item.price }}</h4>
         </div>
       </div>
     </router-link>
@@ -36,22 +33,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img{
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-}
-.items img:hover{
-  opacity: 0.5;
+
+.items:hover{
+  opacity: 0.75;
   transition: all 1s ease;
 }
-
 .items .to-hover{
   display: none;
   text-align: center;
 }
-
-.items img:hover .to-hover{
+.items:hover .to-hover{
   visibility: visible;
+}
+.itemImage {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
 }
 </style>

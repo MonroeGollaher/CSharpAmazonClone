@@ -13,6 +13,15 @@ class ListsService {
     }
   }
 
+  async setActiveList(listId) {
+    try {
+      const res = await api.get('api/lists/' + listId)
+      AppState.activeList = res.data
+    } catch (error) {
+      logger.error(error)
+    }
+  }
+
   async createList(listData) {
     try {
       await api.post('api/lists', listData)
